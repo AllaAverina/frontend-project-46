@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import parseFile from './fileParser.js';
+import parseFile from './parsers.js';
 
 const makeItem = (sign, key, value) => `${sign} ${key}: ${value}`;
 
