@@ -9,3 +9,6 @@
 
 #### Сравнение плоских файлов (YAML):
 [![asciicast](https://asciinema.org/a/dqJC8hCQUfVKJk60fxiBZQ0hq.svg)](https://asciinema.org/a/dqJC8hCQUfVKJk60fxiBZQ0hq)
+
+#### Сравнение вложенных файлов (JSON, YAML):
+[![asciicast](https://asciinema.org/a/NNKiCeLGqfRgALiAJF3HijQ4Y.svg)](https://asciinema.org/a/NNKiCeLGqfRgALiAJF3HijQ4Y)
