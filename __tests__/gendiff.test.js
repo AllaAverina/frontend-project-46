@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-const expected = `{
+const expectedStylish = `{
     common: {
       + follow: false
         setting1: Value 1
@@ -53,18 +53,46 @@ const expected = `{
     }
 }`;
 
-describe('gendiff function', () => {
+describe('gendiff stylish format', () => {
   test('comparing json files', () => {
     const filepath1 = getFixturePath('file1.json');
     const filepath2 = getFixturePath('file2.json');
 
-    expect(gendiff(filepath1, filepath2)).toEqual(expected);
+    expect(gendiff(filepath1, filepath2)).toEqual(expectedStylish);
   });
 
   test('comparing yaml files', () => {
     const filepath1 = getFixturePath('file1.yml');
     const filepath2 = getFixturePath('file2.yml');
 
-    expect(gendiff(filepath1, filepath2)).toEqual(expected);
+    expect(gendiff(filepath1, filepath2)).toEqual(expectedStylish);
+  });
+});
+
+const expectedPlain = `Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`;
+
+describe('gendiff plain format', () => {
+  test('comparing json files', () => {
+    const filepath1 = getFixturePath('file1.json');
+    const filepath2 = getFixturePath('file2.json');
+
+    expect(gendiff(filepath1, filepath2, 'plain')).toEqual(expectedPlain);
+  });
+
+  test('comparing yaml files', () => {
+    const filepath1 = getFixturePath('file1.yml');
+    const filepath2 = getFixturePath('file2.yml');
+
+    expect(gendiff(filepath1, filepath2, 'plain')).toEqual(expectedPlain);
   });
 });
