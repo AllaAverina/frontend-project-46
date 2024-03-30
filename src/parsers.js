@@ -2,16 +2,16 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 
-const parseText = (data) => ({ ...data.toString().replaceAll('\r\n', '\n').split('\n') });
-
 const getParser = (extension) => {
-  if (extension === '.json') {
-    return JSON.parse;
+  switch (extension) {
+    case '.json':
+      return JSON.parse;
+    case '.yml':
+    case '.yaml':
+      return yaml.load;
+    default:
+      throw new Error(`Unknown file extension: '${extension}'.`);
   }
-  if (['.yml', '.yaml'].includes(extension)) {
-    return yaml.load;
-  }
-  return parseText;
 };
 
 export default (filename) => {

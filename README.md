@@ -15,3 +15,6 @@
 
 #### Сравнение вложенных файлов в формате plain (JSON, YAML):
 [![asciicast](https://asciinema.org/a/j9nGPvJv13PYp3mmh5rynwBBx.svg)](https://asciinema.org/a/j9nGPvJv13PYp3mmh5rynwBBx)
+
+#### Сравнение вложенных файлов в формате json (JSON, YAML):
+[![asciicast](https://asciinema.org/a/G9uGLcaHsTrG9kFS1MDpY2wHe.svg)](https://asciinema.org/a/G9uGLcaHsTrG9kFS1MDpY2wHe)

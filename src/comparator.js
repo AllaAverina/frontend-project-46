@@ -4,20 +4,18 @@ const compare = (obj1, obj2) => {
   const keys = _.union(_.keys(obj1), _.keys(obj2)).sort();
   return keys.map((key) => {
     if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
-      return { status: 'nested', key, values: compare(obj1[key], obj2[key]) };
+      return { key, status: 'nested', values: compare(obj1[key], obj2[key]) };
     }
     if (_.has(obj1, key) && _.has(obj2, key)) {
       if (obj1[key] === obj2[key]) {
-        return { status: 'equal', key, value: obj1[key] };
+        return { key, status: 'equal', value: obj1[key] };
       }
-      return {
-        status: 'updated', key, oldValue: obj1[key], newValue: obj2[key],
-      };
+      return { key, status: 'updated', oldValue: obj1[key], newValue: obj2[key] };
     }
     if (_.has(obj1, key)) {
-      return { status: 'deleted', key, value: obj1[key] };
+      return { key, status: 'deleted', value: obj1[key] };
     }
-    return { status: 'added', key, value: obj2[key] };
+    return { key, status: 'added', value: obj2[key] };
   });
 };
 
