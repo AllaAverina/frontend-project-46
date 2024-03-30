@@ -1,37 +1,30 @@
 import _ from 'lodash';
 
 const prepare = (value) => {
-  let prepared = value;
   if (_.isObject(value)) {
-    prepared = '[complex value]';
+    return '[complex value]';
   }
   if (_.isString(value)) {
-    prepared = `'${value}'`;
+    return `'${value}'`;
   }
-  return prepared;
+  return value;
 };
 
 const plain = (diff, parent = '') => (
   diff.map((item) => {
-    let line;
     switch (item.status) {
       case 'added':
-        line = `Property '${parent}${item.key}' was added with value: ${prepare(item.value)}`;
-        break;
+        return `Property '${parent}${item.key}' was added with value: ${prepare(item.value)}`;
       case 'deleted':
-        line = `Property '${parent}${item.key}' was removed`;
-        break;
+        return `Property '${parent}${item.key}' was removed`;
       case 'updated':
-        line = `Property '${parent}${item.key}' was updated. `
+        return `Property '${parent}${item.key}' was updated. `
         + `From ${prepare(item.oldValue)} to ${prepare(item.newValue)}`;
-        break;
       case 'nested':
-        line = plain(item.values, `${parent}${item.key}.`);
-        break;
+        return plain(item.children, `${parent}${item.key}.`);
       default:
-        break;
+        return '';
     }
-    return line;
   }).filter((item) => item).join('\n')
 );
 

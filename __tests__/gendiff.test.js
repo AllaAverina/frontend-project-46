@@ -97,19 +97,19 @@ describe('gendiff plain format', () => {
   });
 });
 
-const expectedJson = '[{"key":"common","status":"nested","values":['
+const expectedJson = '[{"key":"common","status":"nested","children":['
 + '{"key":"follow","status":"added","value":false},'
 + '{"key":"setting1","status":"equal","value":"Value 1"},'
 + '{"key":"setting2","status":"deleted","value":200},'
 + '{"key":"setting3","status":"updated","oldValue":true,"newValue":null},'
 + '{"key":"setting4","status":"added","value":"blah blah"},'
 + '{"key":"setting5","status":"added","value":{"key5":"value5"}},'
-+ '{"key":"setting6","status":"nested","values":['
-+ '{"key":"doge","status":"nested","values":['
++ '{"key":"setting6","status":"nested","children":['
++ '{"key":"doge","status":"nested","children":['
 + '{"key":"wow","status":"updated","oldValue":"","newValue":"so much"}]},'
 + '{"key":"key","status":"equal","value":"value"},'
 + '{"key":"ops","status":"added","value":"vops"}]}]},'
-+ '{"key":"group1","status":"nested","values":['
++ '{"key":"group1","status":"nested","children":['
 + '{"key":"baz","status":"updated","oldValue":"bas","newValue":"bars"},'
 + '{"key":"foo","status":"equal","value":"bar"},'
 + '{"key":"nest","status":"updated","oldValue":{"key":"value"},"newValue":"str"}]},'

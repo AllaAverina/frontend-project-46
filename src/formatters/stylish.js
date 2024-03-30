@@ -25,7 +25,7 @@ export default (diff) => {
   const inner = (item, depth) => {
     const indent = makeIndent(depth, 2);
     if (item.status === 'nested') {
-      const lines = item.values.map((value) => inner(value, depth + 1));
+      const lines = item.children.map((value) => inner(value, depth + 1));
       return [`${indent}${signs[item.status]} ${item.key}: {`, ...lines, `${makeIndent(depth)}}`].join('\n');
     }
     if (item.status === 'updated') {
