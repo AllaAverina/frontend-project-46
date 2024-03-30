@@ -10,7 +10,9 @@ const compare = (obj1, obj2) => {
       if (obj1[key] === obj2[key]) {
         return { key, status: 'equal', value: obj1[key] };
       }
-      return { key, status: 'updated', oldValue: obj1[key], newValue: obj2[key] };
+      return {
+        key, status: 'updated', oldValue: obj1[key], newValue: obj2[key],
+      };
     }
     if (_.has(obj1, key)) {
       return { key, status: 'deleted', value: obj1[key] };
